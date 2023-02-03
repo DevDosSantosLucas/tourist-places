@@ -12,7 +12,7 @@ class tourist_places(models.Model):
     attractions = models.ManyToManyField(attraction)
     comments = models.ManyToManyField(comment)
     assessments = models.ManyToManyField(assessment)
-    address = models.ForeignKey(localization, on_delete=models.CASCADE)
+    address = models.ForeignKey(localization, on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):
