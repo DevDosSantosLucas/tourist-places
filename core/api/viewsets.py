@@ -15,3 +15,6 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         return Response({'teste': 123})
+    
+    def create(self, request, *args, **kwargs):
+        return Response({'return': request.data['name']})
