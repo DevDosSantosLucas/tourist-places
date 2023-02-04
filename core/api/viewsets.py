@@ -1,3 +1,4 @@
+from rest_framework.response import Response
 from rest_framework import viewsets
 from core.models import tourist_places  
 from .serializers import TouristPlacesSerializer
@@ -11,3 +12,6 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
        return tourist_places.objects.filter(approved=True)
+
+    def list(self, request, *args, **kwargs):
+        return Response({'teste': 123})
