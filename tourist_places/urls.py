@@ -18,15 +18,19 @@ from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
 from core.api.viewsets import TouristPlaceViewSet
-from attractions.api.viewsets import AttractionsViewSet
+from attractions.api.viewsets import AttractionViewSet
 from localization.api.viewsets import LocalizationViewSet
+from comments.api.viewsets import CommentViewSet
+
 
 
 
 router = routers.DefaultRouter()
-router.register(r'touristplace', TouristPlaceViewSet)
-router.register(r'attractions', AttractionsViewSet)
-router.register(r'localization', LocalizationViewSet)
+router.register(r'touristplaces', TouristPlaceViewSet)
+router.register(r'attractions', AttractionViewSet)
+router.register(r'localizations', LocalizationViewSet)
+router.register(r'comments', CommentViewSet)
+
 
 
 
