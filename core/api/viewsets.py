@@ -9,6 +9,7 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     """
     #queryset = tourist_places.objects.all()
     serializer_class = TouristPlacesSerializer
+    #http_method_names = ['DELETE',]
 
     def get_queryset(self):
        return tourist_places.objects.filter(approved=True)
@@ -18,3 +19,6 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         return Response({'return': request.data['name']})
+    
+    def destroy(self, request, *args, **kwargs):
+        pass
