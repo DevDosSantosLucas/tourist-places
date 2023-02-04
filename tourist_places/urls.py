@@ -21,6 +21,8 @@ from core.api.viewsets import TouristPlaceViewSet
 from attractions.api.viewsets import AttractionViewSet
 from localization.api.viewsets import LocalizationViewSet
 from comments.api.viewsets import CommentViewSet
+from assessments.api.viewsets import AssessmentViewSet
+
 
 
 
@@ -30,6 +32,8 @@ router.register(r'touristplaces', TouristPlaceViewSet)
 router.register(r'attractions', AttractionViewSet)
 router.register(r'localizations', LocalizationViewSet)
 router.register(r'comments', CommentViewSet)
+router.register(r'assessments', AssessmentViewSet)
+
 
 
 
