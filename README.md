@@ -34,3 +34,6 @@ criar no admin ../core/admin
 (venv) C:\www\django\api-rest>python manage.py makemigrations
 (venv) C:\www\django\api-rest>python manage.py migrate
 
+
+IMAGENS:
+(venv) C:\www\django\api-rest>pip install Pillow

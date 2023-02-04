@@ -13,6 +13,7 @@ class tourist_places(models.Model):
     comments = models.ManyToManyField(comment)
     assessments = models.ManyToManyField(assessment)
     address = models.ForeignKey(localization, on_delete=models.CASCADE, null=True, blank=True)
+    picture = models.ImageField(upload_to='tourist_places', null=True, blank=True)
 
 
     def __str__(self):
