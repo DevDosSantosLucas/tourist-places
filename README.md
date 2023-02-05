@@ -37,3 +37,6 @@ criar no admin ../core/admin
 
 IMAGENS:
 (venv) C:\www\django\api-rest>pip install Pillow
+
+filtragem DJANGO FILTER
+(venv) C:\www\django\api-rest>pip install django-filter

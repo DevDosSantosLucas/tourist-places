@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'assessments',
     'comments',
     'localization',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = 'images'
 
 MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
