@@ -11,9 +11,25 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     #queryset = tourist_places.objects.all()
     serializer_class = TouristPlacesSerializer
     #http_method_names = ['DELETE',]
+    
+    def get_queryset(self):#query String
+    #http://127.0.0.1:8000/touristplaces/?id=3&name=createee&description=teste%20outr
+        id = self.request.query_params.get('id',None)
+        name = self.request.query_params.get('name',None)
+        description = self.request.query_params.get('description',None)
+        queryset = tourist_places.objects.all()
+        if id:
+            queryset = tourist_places.objects.filter(pk=id)
 
-    def get_queryset(self):
-       return tourist_places.objects.filter(approved=True)
+        if name:
+            #queryset = queryset.filter(name=name)
+            queryset = queryset.filter(name__iexact=name) #__iexact => case sensitive
+
+        
+        if description:
+            queryset = queryset.filter(description__iexact=description)
+
+        return queryset
 
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
