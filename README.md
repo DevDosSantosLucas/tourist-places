@@ -40,3 +40,11 @@ IMAGENS:
 
 filtragem DJANGO FILTER
 (venv) C:\www\django\api-rest>pip install django-filter
+
+from rest_framework import filters
+  lookup_prefixes = {
+        '^': 'istartswith',
+        '=': 'iexact',
+        '@': 'search',
+        '$': 'iregex',
+    }

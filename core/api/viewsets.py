@@ -1,6 +1,7 @@
 from argparse import Action
 from rest_framework.response import Response
 from rest_framework import viewsets
+from rest_framework import filters
 from core.models import tourist_places  
 from .serializers import TouristPlacesSerializer
 
@@ -11,6 +12,9 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     #queryset = tourist_places.objects.all()
     serializer_class = TouristPlacesSerializer
     #http_method_names = ['DELETE',]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'description']
+    #http://127.0.0.1:8000/touristplaces/?search=createee
     
     def get_queryset(self):#query String
     #http://127.0.0.1:8000/touristplaces/?id=3&name=createee&description=teste%20outr
