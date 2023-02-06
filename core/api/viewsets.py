@@ -15,6 +15,7 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'description']
     #http://127.0.0.1:8000/touristplaces/?search=createee
+    lookup_field='name'
     
     def get_queryset(self):#query String
     #http://127.0.0.1:8000/touristplaces/?id=3&name=createee&description=teste%20outr
