@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'comments',
     'localization',
     'django_filters',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [

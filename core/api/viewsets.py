@@ -2,6 +2,8 @@ from argparse import Action
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import filters
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from core.models import tourist_places  
 from .serializers import TouristPlacesSerializer
 
@@ -10,9 +12,11 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     #queryset = tourist_places.objects.all()
-    serializer_class = TouristPlacesSerializer
     #http_method_names = ['DELETE',]
+    serializer_class = TouristPlacesSerializer
     filter_backends = [filters.SearchFilter]
+    permission_classes = [IsAuthenticated,]
+    authentication_classes=(TokenAuthentication,)
     search_fields = ['name', 'description']
     #http://127.0.0.1:8000/touristplaces/?search=createee
     lookup_field='name'

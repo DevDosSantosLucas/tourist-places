@@ -22,6 +22,7 @@ from attractions.api.viewsets import AttractionViewSet
 from localization.api.viewsets import LocalizationViewSet
 from comments.api.viewsets import CommentViewSet
 from assessments.api.viewsets import AssessmentViewSet
+from rest_framework.authtoken.views import  obtain_auth_token# ObtainAuthToken
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -43,5 +44,6 @@ router.register(r'assessments', AssessmentViewSet)
 urlpatterns = [
     path('',include(router.urls)), 
     path('admin/', admin.site.urls),
+    path('api-token-auth/', obtain_auth_token)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
