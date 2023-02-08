@@ -15,6 +15,12 @@ class tourist_places(models.Model):
     address = models.ForeignKey(localization, on_delete=models.CASCADE, null=True, blank=True)
     picture = models.ImageField(upload_to='tourist_places', null=True, blank=True)
 
+    @property
+    def full_description2(self):
+        return '%s - %s' % (self.name,self.description)
+
+
+
 
     def __str__(self):
         return self.name
