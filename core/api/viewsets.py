@@ -1,5 +1,5 @@
-from argparse import Action
-from rest_framework.response import Response
+from django.http import HttpResponse
+from rest_framework.decorators import action
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
@@ -19,7 +19,8 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     authentication_classes=(TokenAuthentication,)
     search_fields = ['name', 'description']
     #http://127.0.0.1:8000/touristplaces/?search=createee
-    lookup_field='name'
+    #lookup_field='name'
+    lookup_field='id'
     
     def get_queryset(self):#query String
     #http://127.0.0.1:8000/touristplaces/?id=3&name=createee&description=teste%20outr
@@ -60,10 +61,19 @@ class TouristPlaceViewSet(viewsets.ModelViewSet):
     def partial_update(self, request, *args, **kwargs):
         return super().partial_update(request, *args, **kwargs)
     
-    #@Action(method =['get'],detail=True)
-    #def denounce(self, request, pk=None):
-    #    pass
+    @action(methods =['get'],detail=True)
+    def denounce(self, request, pk=None):
+        pass
 
-    #@Action(method=['get'],detail=False)
-    #def teste(self,request):
-    #    pass  
+    @action(methods =['get'],detail=False)
+    def teste(self,request):
+        pass  
+   
+    @action(methods = ['post'], detail = True)
+    def associate_attractions(self, request, id):
+        attractions = request.data['ids']
+        place = tourist_places.objects.get(id=id)
+    
+        place.attractions.set(attractions)
+        place.save()
+        return HttpResponse("ok")
